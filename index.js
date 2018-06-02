@@ -6,6 +6,7 @@ var ESLogTransform = require('./transform');
 
 var esClient = new elasticsearch.Client({
   host: process.env.ES_URL || 'localhost:9200',
+  sniffOnConnectionFault: true,
 });
 var esWriteStream = new ElasticsearchWritableStream(esClient, {
   highWaterMark: 256,
